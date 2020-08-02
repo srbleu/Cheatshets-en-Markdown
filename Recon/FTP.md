@@ -19,3 +19,13 @@ hydra -L UserList -P PassList ftp IP
 ```
 nmap --script ftp-brute --script-args userdb=UserList -p Puerto IP
 ```
+## Common Vulnerabilities
+
+### ProFTPD 1.3.5
+```
+https://www.exploit-db.com/exploits/36742
+```
+### vsftpd 2.3.4 Backdoor
+```
+https://github.com/ahervias77/vsftpd-2.3.4-exploit
+```
