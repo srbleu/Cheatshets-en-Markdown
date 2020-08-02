@@ -52,3 +52,16 @@ auxiliary/scanner/smb/smb_login
 ```
 hydra -L UserList -P PassList smb IP
 ```
+## SMB Vulns
+### Discovery
+```
+nmap --script vuln -p139,445 IP
+```
+### MS17-010
+```
+https://github.com/worawit/MS17-010
+```
+###SMB 3.0.X RCE:				
+```
+https://github.com/amriunix/CVE-2007-2447
+```
