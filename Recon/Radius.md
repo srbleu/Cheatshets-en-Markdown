@@ -28,7 +28,7 @@ while read password; do
 done < $1
 ```
 ### Password Bruteforce
-```
+```bash
 #! /bin/bash
 while read password; do
     radtest knowuser $password IP 10 knownsecret > /dev/null
