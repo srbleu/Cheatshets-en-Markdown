@@ -1,16 +1,16 @@
 ## Recon
-```
+```bash
 nmap -sU IP -p 1812,1813
 ```
 
 ## Testear valores
 ### Test secrets
-```
+```bash
 echo "Message-Authenticator = 0x00" | radclient IP:1812 auth SecretToTest
 ```
 
 ### Test pass
-```
+```bash
 radtest user pass IP 10 Secret
 ```
 ## Bruteforce
