@@ -25,7 +25,7 @@ auxiliary/scanner/mysql/mysql_hashdump
 ```
 nmap --script mysql-dump-hashes --script-args="mysqluser='VALIDUSER',mysqlpass='VALIDPASS'" -p 3306 IP
 ```		
-## Ver Writable directories desde la DB
+### Ver Writable directories desde la DB
 ```
 auxiliary/scanner/mysql/mysql_writable_dirs
 ```
