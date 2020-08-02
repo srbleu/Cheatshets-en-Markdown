@@ -1,6 +1,8 @@
 ## Anonymous sesion
 ### Check con nmap
-   		nmap IP --script ftp-anon
+```
+nmap IP --script ftp-anon
+```
 ### Sesion
 ```
 ftp IP
@@ -10,6 +12,10 @@ ftp IP
 
 ## Bruteforce login
 ### Hydra
-		hydra -L UserList -P PassList ftp IP 
+```
+hydra -L UserList -P PassList ftp IP 
+```
 ### Nmap
-		nmap --script ftp-brute --script-args userdb=UserList -p Puerto IP
+```
+nmap --script ftp-brute --script-args userdb=UserList -p Puerto IP
+```
