@@ -19,7 +19,7 @@ import pprint
 client = Client(('IP', PORT))
 pp = pprint.PrettyPrinter(indent=4)
 for i in range(0 , 7):
-  pp.pprint(client.stats("cachedump",i,"0"))
+  pp.pprint(client.stats("cachedump",str(i),"0"))
 ```
 #### Obtener el valor de una key
 ```bash
