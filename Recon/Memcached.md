@@ -3,7 +3,7 @@
 ```bash
 nmap -p port --script memcached-info IP
 ```
-### nc/Telnet
+### Netcat/Telnet
 #### Conexion
 ```bash
 nc IP PORT
@@ -64,4 +64,9 @@ for key in $(memcdump --server=target-1); do echo ------ $key ------; memccat --
 ##### Metasploit module
 ```msf
 auxiliary/gather/memcached_extractor
+```
+### Injections 
+#### Libro de referencia 
+```
+https://www.blackhat.com/docs/us-14/materials/us-14-Novikov-The-New-Page-Of-Injections-Book-Memcached-Injections-WP.pdf
 ```
