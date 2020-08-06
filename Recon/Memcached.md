@@ -1,6 +1,6 @@
 ## Info
 ### Nmap
-```
+```bash
 nmap -p port --script memcached-info IP
 ```
 ### nc/Telnet
@@ -31,8 +31,8 @@ echo -e "get data\r\nquit\r\n" | nc IP PORT > data
 python -c 'import pickle;print pickle.load(open("data"));'
 ```
 #### Obtener el numero total de parejas key value en el servidor
-```
-echo 'stats items1\r\nquit\r\n' | nc IP PORT | grep 'number '
+```bash
+echo -e 'stats items1\r\nquit\r\n' | nc IP PORT | grep 'number '
 ```
 Y sumamos los numeros de cada item 
 
@@ -62,6 +62,6 @@ for key in $(memcdump --server=IP); do echo ------ $key ------; memccat --server
 for key in $(memcdump --server=target-1); do echo ------ $key ------; memccat --server=target-1 $key; done
 ```
 ##### Metasploit module
-```
+```msf
 auxiliary/gather/memcached_extractor
 ```
