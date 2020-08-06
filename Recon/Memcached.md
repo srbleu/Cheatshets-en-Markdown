@@ -3,13 +3,65 @@
 ```
 nmap -p port --script memcached-info IP
 ```
-### Metasploit module
+### nc/Telnet
+#### Conexion
+```bash
+nc IP PORT
 ```
-auxiliary/gather/memcached_extractor
+#### Version 
+```bash
+echo -e 'version1\r\nquit\r\n' | nc IP PORT
 ```
-### Dumpear las keys y values
+#### Obtener la lista de keys 
+```python
+from pymemcache.client.base import Client
+import pprint
+client = Client(('IP', PORT))
+pp = pprint.PrettyPrinter(indent=4)
+for i in range(0 , 7):
+  pp.pprint(client.stats("cachedump",i,"0"))
 ```
+#### Obtener el valor de una key
+```bash
+echo -e 'get KEYNAME1\r\nquit\r\n' | nc IP PORT
+```
+##### JSONIFY Data usando pickle
+```bash
+echo -e "get data\r\nquit\r\n" | nc IP PORT > data
+python -c 'import pickle;print pickle.load(open("data"));'
+```
+#### Obtener el numero total de parejas key value en el servidor
+```
+echo 'stats items1\r\nquit\r\n' | nc IP PORT | grep 'number '
+```
+Y sumamos los numeros de cada item 
+
+##### Python Implementation
+
+```python
+python -c 'from pymemcache.client.base import Client; client = Client(("IP", PORT)); printclient.stats()["curr_items"]'
+```
+#### Añadir una clave-valor nueva
+```bash
+nc IP PORT
+> add CLAVE 0 0 LENGHT
+> VALUE 
+```
+#### Actualizar el valor de una clave
+```bash
+nc IP PORT
+> replace CLAVE 0 0 LENGHT
+> VALUE 
+```
+#### Dump
+
+##### Bash
+```bash
 xargs -L1 -I% sh -c 'echo "get KEYNAME" | nc IP PORT'
 for key in $(memcdump --server=IP); do echo ------ $key ------; memccat --server=IP $key; done
 for key in $(memcdump --server=target-1); do echo ------ $key ------; memccat --server=target-1 $key; done
+```
+##### Metasploit module
+```
+auxiliary/gather/memcached_extractor
 ```
