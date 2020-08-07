@@ -12,7 +12,7 @@ nc IP PORT
 ```bash
 echo -e 'version1\r\nquit\r\n' | nc IP PORT
 ```
-#### Obtener la lista de keys 
+#### Obtener la lista de keys con Python
 ```python
 from pymemcache.client.base import Client
 import pprint
@@ -20,6 +20,10 @@ client = Client(('IP', PORT))
 pp = pprint.PrettyPrinter(indent=4)
 for i in range(0 , 7):
   pp.pprint(client.stats("cachedump",str(i),"0"))
+```
+#### Obtener la lista de warm keys 
+```
+echo -e 'lru_crawler metadump all\r\nquit\r\n' | nc IP PORT | grep 'fetch=yes'
 ```
 #### Obtener el valor de una key
 ```bash
