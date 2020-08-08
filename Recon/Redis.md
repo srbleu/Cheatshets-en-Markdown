@@ -21,7 +21,7 @@ LRANGE KEYNAME 0 -1
 SMEMBERS KEYNAME
 ```
 ```
-HGETS KEYNAME
+HGETALL KEYNAME
 ```
 #### Autenticación
 ```
