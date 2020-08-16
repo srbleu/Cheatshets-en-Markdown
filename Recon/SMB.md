@@ -1,3 +1,8 @@
+## Enum4liux
+```
+enum4linuz -a IP
+```
+
 ## Discover netbios name & OS 
 ```
 nmap --script smb-os-discovery.nse -p 445 
