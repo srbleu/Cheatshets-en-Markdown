@@ -37,6 +37,7 @@ auxiliary/scanner/smb/smb_enumshares
 ### SmbClient
 ```
 smbclient -L IP -N
+smbget smb://IP//folder -R
 ```
 
 ## Enumeracion de usuarios
