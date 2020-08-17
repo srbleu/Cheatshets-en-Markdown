@@ -1,5 +1,7 @@
-## Checkear registros DNS
+# DNS
+Usualmente ene el puerto 53 puede funcionar sobre tcp o sobre udp. 
 
+## Checkear registros
 ### Name Server
 ```
 dig NS domain @ServerIP
