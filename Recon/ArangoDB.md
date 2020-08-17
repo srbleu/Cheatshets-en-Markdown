@@ -1,5 +1,5 @@
 # Arango DB
-Es un sistema de base de datos multimodelo
+Es un sistema de base de datos multimodelo, usualmente ubicado en el puerto 8529
 
 
 ## Enumeracion mediante la REST API
