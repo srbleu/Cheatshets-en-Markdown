@@ -1,6 +1,9 @@
+# CockroachDB
+Un sistema de gestión de base de datos distribuido
+
 ## Conexion
 ```bash
-cockroach  sql --insecure --host IP
+cockroach sql --insecure --host IP
 ```
 ### Internal comands
 #### Version
