@@ -1,27 +1,21 @@
-## Mongo Conexion
+# MongoDB
+
+## Interacción con el servicio
+### Conexion mediante el cliente mongo
 ```
 mongo IP
 ```
-### Internal DB enum
+### Obtener la lista debases de datos mediante el cliente mongo
 ```
 show dbs
 ```
-### Ver estructura de una db
+### Obtener la lista estructura de la DB mediante el cliente mongo
 ```
 use DBNAME
 show collections
 ```
-## Muestra las bases de datos
-### Nmap Script
-```
-nmap --script mongodb-databases IP -p PORT
-```
-## Bruteforce
-### Nmap Login BF
+## Ataque por fuerza bruta
 ```
 nmap -p PORT --script mongodb-brute --script-args mongodb-brute.db=DBNAME IP
 ```
-### Metasploit module
-```
-use auxiliary/scanner/mongodb/mongodb_login
-```
+
