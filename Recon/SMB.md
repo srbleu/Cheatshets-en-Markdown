@@ -1,38 +1,36 @@
-## Enum4liux
+# SMB
+
+## Enumeración
+### Enum4liux
 ```
 enum4linuz -a IP
 ```
-
-## Discover netbios name & OS 
+###Discover netbios name & OS 
 ```
 nmap --script smb-os-discovery.nse -p 445 
 ```
-## Null session
+
+## Interacción con el servicio
+### Accesso mediante null session
 ```
 rpcclient -U "" -N IP
 ```
-
-## Comandos propios de RPCclient
-### Sacar usuarios
+### Sacar usuarios mediante (rpcclient)
 ```
 enumdomusers
 ```
-### Ver SID de un usuario
+### Ver SID de un usuario mediante (rpcclient)
 ```
 lookupnames user
 ```
-### Groups
-```
+### Obtener groups mediante (rpcclient)
+``` 
 enumdomgroups
 ```		
 ## Shares
 ### Nmap
 ```
 nmap --script smb-enum-shares.nse -p445 IP
-```
-### Metasploit
-```
-auxiliary/scanner/smb/smb_enumshares
 ```
 ### SmbClient
 ```
