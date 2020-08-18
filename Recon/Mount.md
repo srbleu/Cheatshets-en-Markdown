@@ -1,9 +1,12 @@
 # Mountd
-## Nmap full rpcbind
+
+## Enum
+### Nmap full rpcbind
 ```
 nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount
 ```
-## Montaje
+## Interacción con el servicio
+### Montaje
 ```
 sudo mount IP:/exposedmount /mountpoint
 ```
