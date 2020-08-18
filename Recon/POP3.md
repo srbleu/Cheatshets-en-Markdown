@@ -1,22 +1,16 @@
-## Hallar el domain name/banner 
-### Netcat
+# POP3
+
+## Enumeración
+### Hallar el domain name/banner 
 ```
 nc IP Puerto 
 ```
-### Nmap
+### Hallar el domain name/banner (nmap)
 ```
 nmap -sV -script banner IP
 ```	
-## Bruteforcing
+## Ataque por fuerza bruta
 ### Hydra
 ```
 hydra -L UserList -P PassList pop3 IP
-```
-### Hydra SSL version 
-```
-hydra -L UserList -P PassList pop3s IP 	
-```
-### Metasploit module
-```
-auxiliary/scanner/pop3/pop3_login
 ```
