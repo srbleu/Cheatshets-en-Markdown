@@ -1,29 +1,31 @@
 # CockroachDB
 Un sistema de gestión de base de datos distribuido
 
-## Conexion
+## Enumeración
+### Obtener la lista de nodos desde el cliente
+```bash
+cockroach  node ls --insecure --host IP
+```
+
+## Interacción con el servicio
+### Conexión mediante el cliente
 ```bash
 cockroach sql --insecure --host IP
 ```
-### Internal comands
-#### Version
+#### Obtener version desde la DB
 ```sql
 select version()
 ```
-#### Databases
+#### Obtener el listado de las bases de datos desde dentro de la DB
 ```sql
 show databases;
 ```
-#### Tables
+#### Obtener el listado de las tablas desde dentro de la DB
 ```sql
 use DBNAME;
 show tables
 ```
-#### Privileges
+#### Obtener los privilegios de los usuarios de la DB 
 ```sql
 show grants on database DBNAME;
-```
-## Node List
-```bash
-cockroach  node ls --insecure --host IP
 ```
