@@ -1,29 +1,28 @@
 # Arango DB
 Es un sistema de base de datos multimodelo, usualmente ubicado en el puerto 8529
 
+## Enumeracion 
 
-## Enumeracion mediante la REST API
-### Version
+### Version a traves de la REST API
 ```
 curl -X GET http://IP:PORT/_api/version | jq '.'
 ```
-### Users
+### Enumeración de usuarios a través de la REST AAPI
 ```
 curl -X GET http://IP:PORT/_api/user |  jq '.'
 ```
 
-## Conexion
-### Arangosh
+## Interacción con el servicio
+### Conexión mediante Arangosh
 ```
 arangosh --server.endpoint tcp://IP:PORT
 ```
-### Arangodump
+### Dump de la base de datos con Arangodump
 ```
 arangosh --server.endpoint tcp://IP:PORT
 ```
-
-## Bruteforce
+## Ataque por fuerza bruta
 ### Hydra
 ```
-hydra -L USERLIST -P PASSWORDLIST -s PORT -f IP http-get /endpoiint/to/authenticate
+hydra -L USERLIST -P PASSWORDLIST -s PORT -f IP http-get /endpoint/to/authenticate
 ```
