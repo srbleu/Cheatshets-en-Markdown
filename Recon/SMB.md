@@ -1,6 +1,10 @@
 # SMB
 
 ## Enumeración
+### Vuln discovery (nmap)
+```
+nmap --script vuln -p139,445 IP
+```
 ### Enum4liux
 ```
 enum4linuz -a IP
@@ -15,52 +19,41 @@ nmap --script smb-os-discovery.nse -p 445
 ```
 rpcclient -U "" -N IP
 ```
-### Sacar usuarios mediante (rpcclient)
+### Sacar usuarios (rpcclient)
 ```
 enumdomusers
 ```
-### Ver SID de un usuario mediante (rpcclient)
+### Ver SID de un usuario (rpcclient)
 ```
 lookupnames user
 ```
-### Obtener groups mediante (rpcclient)
+### Obtener groups (rpcclient)
 ``` 
 enumdomgroups
 ```		
-## Shares
-### Nmap
+### Enumerar shares
+#### Enumeracion con nmap
 ```
 nmap --script smb-enum-shares.nse -p445 IP
 ```
-### SmbClient
+### Enumeración y obtencion (smbclient)
 ```
 smbclient -L IP -N
 smbget smb://IP//folder -R
 ```
 
-## Enumeracion de usuarios
-### Nmap
+## Enumeracion de usuarios (nmap)
 ```
 nmap --script smb-enum-users.nse -p445 IP
 ```
-### Metasploit
-```
-auxiliary/scanner/smb/smb_enumusers
-```		
-## Bruteforce
-### Metasploit
-```
-auxiliary/scanner/smb/smb_login
-```
+
+## Ataques por fuerza bruta
 ### Hydra
 ```
 hydra -L UserList -P PassList smb IP
 ```
-## SMB Vulns
-### Discovery
-```
-nmap --script vuln -p139,445 IP
-```
+
+## Vulnerabilidades comunes sin metasploit
 ### MS17-010
 ```
 https://github.com/worawit/MS17-010
