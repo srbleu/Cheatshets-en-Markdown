@@ -5,7 +5,15 @@ Servicio de bases de datos SQL usualmente en el puerto 3306
 ```nmap
 nmap --script=mysql-empty-password -p 3306 IP
 ```	
-## Interacción con el servidor
+## Interacción con el servicio
+### Acceso mediante el cliente mysql
+```
+mysql -h IP -u root -p
+```
+### Ver las bases de datos desde el cliente
+```
+> show databases;
+```
 ### Enumeración de usuarios mediante nmap (Authenticated)
 ```
 nmap --script=mysql-users --script-args="mysqluser='VALIDUSER',mysqlpass='VALIDPASS'" -p 3306 IP
