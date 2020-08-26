@@ -56,7 +56,7 @@ hydra -L UserList -P PassList smb IP
 ## Vulnerabilidades comunes sin metasploit
 ### MS17-010
 ```
-https://github.com/worawit/MS17-010
+https://github.com/helviojunior/MS17-010 
 ```
 ### SMB 3.0.X RCE:				
 ```
