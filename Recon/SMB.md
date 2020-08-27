@@ -41,7 +41,10 @@ nmap --script smb-enum-shares.nse -p445 IP
 smbclient -L IP -N
 smbget smb://IP//folder -R
 ```
-
+### Acceso a folder mediante null sesion
+```
+smbclient -N \\\\IP\\folder 
+```
 ## Enumeracion de usuarios (nmap)
 ```
 nmap --script smb-enum-users.nse -p445 IP
