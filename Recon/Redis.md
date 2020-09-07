@@ -53,4 +53,5 @@ CONFIG GET /redis/dir/.ssh
 ```
 * 3. Pasamos nuestra clave a esa carpeta
 ```
-cat rsa_key | redis-cli -h IP -z set_key
+cat rsa_key | redis-cli -h IP -x set ssh_key
+```
