@@ -20,3 +20,7 @@ Get-ADDomain | Select-Object NetBIOSName, DNSRoot, InfrastructureMaster
 ```
 Get-ADTrust -Filter * | Select-Object Direction,Source,Target
 ```
+## AV off
+```
+Set-MpPreference -DisableRealtimeMonitoring $true
+```
