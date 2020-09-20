@@ -24,3 +24,8 @@ Get-ADTrust -Filter * | Select-Object Direction,Source,Target
 ```
 Set-MpPreference -DisableRealtimeMonitoring $true
 ```
+## Sharphound 
+Bloodhound loot (requiere haber subido el .ps1 correspodiente)
+```
+Invoke-Bloodhound -CollectionMethod All -Domain THROWBACK.local -ZipFileName loot.zip
+```
