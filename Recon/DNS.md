@@ -1,37 +1,40 @@
 # DNS
 Usualmente ene el puerto 53 puede funcionar sobre tcp o sobre udp. 
 
-## Enumeración
-### Checkear registros DNS del servidor
-##### Name Server
+## Checkear registros DNS del servidor
+* Name Server
 ```
 dig NS domain @ServerIP
 ```
-##### Mail Servers
+* Mail Servers
 ```
 dig MX domain @ServerIP
 ```
-##### Certificates
+* Certificates
 ```	
 dig CAA domain @ServerIP
 ```
-##### Location
+* Location
 ```
 dig LOC domain @ServerIP
 ```
-##### Text
+* Text
 ```
 dig TXT domain @ServerIP
 ```
-##### Zone Transfer
+* Zone Transfer
 ```
 dig axfr domain @ServerIP
 ```
-##### Keys (DNSSEC)
+* Keys (DNSSEC)
 ```
 dig DNSKEY domain +multiline @ServerIP
 ```
 ### DNSSEC Zone Enumeration
 ```
 ldns-walk domain
+```
+### DNSenum
+```
+dnsenum domain.tld
 ```
