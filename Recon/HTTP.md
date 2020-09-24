@@ -1,37 +1,55 @@
 # HTTP
 Protocolo de comunicación que permite las transferencias de información en la World Wide Web sirve como base para muchos otros servicios
 
-## Enumeración
-### Encontrar subdirectorios
+## Gobuster
+* Directorios
 ```
 gobuster -u URL -w wordlist
 ```
-### Encontrar scripts ocultos
+* Scripts 
 ```
 gobuster -u URL -w wordlist -x .js, .py, .phpX , .aspx , .sh
 ```
-### Encontrar archivos que puedan contener información sensible
+* Información sensible
 ```
 gobuster -u URL -w wordlist -x .txt, .conf , .config , .bak
 ```
-### Enumera wordpress
+
+## Recon for CMS
+### Averiguar tecnología
+```
+whatweb http://IP
+nikto http://IP
+```
+
+### Wordpress
+* Enumera wordpress
 ```
 wpscan --url -e vp,u,cb,dbe
 ```
-### Enumerar joomla
-```
-perl joomscan.pl -u URL
-```
-
-
-## Ataques por fuerza bruta
-### Wordpress login bruteforce
+* Wordpress login bruteforce
 ```
 wpscan --url URL --wordlist DICTIONARYPATH --username USERNAME
 ```
-### Hydra POST login
+* Hydra bruteforce
 ```
 hydra -L USERLIST -P PASSLIST IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Fblog.thm%2Fwp-admin%2F&testcookie=1:F=The password you entered for the username" 
+```
+### joomla
+* Joomscan
+```
+perl joomscan.pl -u URL
+```
+### Drupal
+[Tool](https://github.com/droope/droopescan)
+```
+droopescan scan drupal http://IP -t 32
+```
+
+## Ataques por fuerza bruta
+* Hydra POST 
+```
+hydra -L USERLIST -P PASSLIST IP http-post-form "/endpoint:USERPARAM=^USER^&PASSPARAM=^PASS^EXTRAPARAMS:FAILMESSAGE" 
 ```
 ### Hydra BruteForce HTTP GET
 ```
