@@ -2,42 +2,42 @@
 Protocolo de transferencia de archivos , usualmente en el puerto 21
 
 ## Enumeración
-### Checkear la existencia de login anonymous mediante NMAP
+### NMAP scan
 ```
-nmap IP --script ftp-anon
+nmap IP --script=ftp-anon,ftp-libopie,ftp-proftpd-backdoor,ftp-vsftpd-backdoor,ftp-vuln-cve2010-4221,tftp-enum -p 21 
 ```
-## Interación con el servicio
-### Obtener sesion cuando el login anonymous esta habilitado
+### Conexión anonima
 ```
-ftp IP
-> username Anonymous
-> password Dummy
+ftp Anonymous@IP
 ```
-### Obtener la ruta del directorio actual
-```
->PWD
-```
-### Checkear si hay permisión de subir archivos / subir archivos
-```
->PUT file.ext
-```
-### Obtener archivos desde el cliente
-```
-get file.ext
-```
-### Volcar los dato del FTP si login anonymous esta activo
+### Volcar el FTP si login anonymous esta activo
 ```bash
 wget ftp://IP/* -r
 ```
+### Interación con el servicio
+* Obtener la ruta del directorio actual
+```
+>PWD
+```
+* Checkear si hay permisión de subir archivos 
+```
+>PUT file.ext
+```
+*  Obtener archivos desde el cliente
+```
+get file.ext
+```
+
 ## Ataque por fuerza bruta
-### Usando Hydra
+* Hydra
 ```
 hydra -L UserList -P PassList ftp://IP 
 ```
-### Usando Nmap
+* Nmap
 ```
 nmap --script ftp-brute --script-args userdb=UserList -p Puerto IP
 ```
+
 ## Vulnerabilidades comunes sin metasploit
 ### ProFTPD 1.3.5 File Copy ( CVE 2015-3306 )
 ```
