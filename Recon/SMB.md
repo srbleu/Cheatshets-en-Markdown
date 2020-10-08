@@ -49,6 +49,10 @@ smbclient -N \\\\IP\\folder
 ```
 nmap --script smb-enum-users.nse -p445 IP
 ```
+## Crackmapexec user discovery via RID
+```
+crackmapexec -t 90 smb IP -u users.txt -p pass.txt --rid-brute
+```
 
 ## Ataques por fuerza bruta
 ### Hydra
