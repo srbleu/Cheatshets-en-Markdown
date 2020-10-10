@@ -38,3 +38,7 @@ ldns-walk domain
 ```
 dnsenum domain.tld
 ```
+### Reverse DNS query
+```
+dig @ServerIP -x IP
+```
