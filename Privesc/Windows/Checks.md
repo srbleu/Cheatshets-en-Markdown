@@ -1,3 +1,30 @@
+# Local enumeration
+## Systeminfo (for known system exploits)
+```
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
+```
+## Parches
+```
+wmic qfe get Caption,Description,HotFixID
+```
+## Unidades de almacenamiento
+```
+wmic logicaldisk get Caption,description,providername
+```
+## Net
+```
+netstat -ano
+```
+## User enumeration
+### Actual user
+```
+whoami /priv
+whoami /groups
+```
+### Another User
+```
+net user babis
+```
 # Getting a file 
 ### CMD
 ``` 
